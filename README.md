@@ -17,13 +17,12 @@ TweetSent is a web application that analyzes the sentiment of tweets or user-inp
 - **Streamlit** (UI Framework)
 - **Scikit-Learn** (Machine Learning)
 - **Joblib** (Model Serialization)
-- **SNScrape** (Twitter Data Scraper)
 - **NLTK** (Text Preprocessing)
 
 ## 📦 Installation & Usage
 ### 1️⃣ Clone the Repository
 ```sh
-git clone https://github.com/your-username/tweetsent.git
+git clone https://github.com/preciousprincee/sentiment-analyzer-AI-.git
 cd tweetsent
 ```
 
@@ -38,13 +37,9 @@ streamlit run app.py
 ```
 
 ## ⚡ How It Works
-1. **Option 1: Input Text**
+1. ** Input Text**
    - Type any text in the input box.
    - Click on **Analyze Sentiment** to get results.
-2. **Option 2: Fetch Tweets**
-   - Enter a **Twitter username**.
-   - Click **Fetch Tweets** to analyze recent tweets.
-
 
 ## 📜 License
 This project is licensed under the **MIT License**.
