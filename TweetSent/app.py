@@ -19,8 +19,8 @@ def clean_text(text):
 # Load model & vectorizer (cached for performance)
 @st.cache_resource
 def load_model():
-    model = joblib.load(base_dir,"logistic_regression_model.pkl")
-    vectorizer = joblib.load(base_dir,"tfidf_vectorizer.pkl")
+    model = joblib.load("logistic_regression_model.pkl")
+    vectorizer = joblib.load("tfidf_vectorizer.pkl")
     return model, vectorizer
 
 # Load once
