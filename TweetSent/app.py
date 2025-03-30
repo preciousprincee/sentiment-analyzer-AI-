@@ -3,6 +3,8 @@ import joblib
 import re
 import time
 import nltk
+import os
+import urllib.request
 from nltk.corpus import stopwords
 
 # Download stopwords (ensure it's available)
@@ -16,11 +18,26 @@ def clean_text(text):
     text = [word for word in text if word not in STOP_WORDS]  # Remove stopwords
     return ' '.join(text)
 
-# Load model & vectorizer (cached for performance)
+# Convert Google Drive links to direct download URLs
+MODEL_URL = "https://drive.google.com/uc?id=1ExZBNbnDMKIhxNhK8477LzH-ciF92Khr&export=download"
+VECTORIZER_URL = "https://drive.google.com/uc?id=1Fj79e02-QNKw3MHtxY_sxFQNpmq9xBUX&export=download"
+
+MODEL_PATH = "logistic_regression_model.pkl"
+VECTORIZER_PATH = "tfidf_vectorizer.pkl"
+
+# Function to load the model
 @st.cache_resource
 def load_model():
-    model = joblib.load("logistic_regression_model.pkl")
-    vectorizer = joblib.load("tfidf_vectorizer.pkl")
+    # Download files if they don’t exist
+    if not os.path.exists(MODEL_PATH):
+        urllib.request.urlretrieve(MODEL_URL, MODEL_PATH)
+    if not os.path.exists(VECTORIZER_PATH):
+        urllib.request.urlretrieve(VECTORIZER_URL, VECTORIZER_PATH)
+
+    # Load model and vectorizer
+    model = joblib.load(MODEL_PATH)
+    vectorizer = joblib.load(VECTORIZER_PATH)
+    
     return model, vectorizer
 
 # Load once
